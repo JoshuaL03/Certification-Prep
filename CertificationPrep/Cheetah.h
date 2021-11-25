@@ -12,14 +12,8 @@ public:
 	void SetPreferredPrey(std::string prey) { preferredPrey = prey; }
 	std::string GetPreferredPrey() { return preferredPrey; }
 
-	void StartRunning() {
-		std::cout << "The cheetah has started running!\n";
-	}
-	void StopRunning() {
-		std::cout << "The cheetah has stopped running!\n";
-	}
+	void StartRunning();
+	void StopRunning();
 
-	void Hunt() {
-		std::cout << "The cheetah is hunting!\n";
-	}
+	void Hunt();
 };

@@ -7,7 +7,5 @@ private:
 	// No fields used for this example.
 
 public:
-	std::string MakeSound() {
-		return "Whoosh!\n";
-	}
+	std::string MakeSound();
 };

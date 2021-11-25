@@ -12,14 +12,8 @@ public:
 	void SetName(std::string n) { name = n; }
 	std::string GetName() { return name; }
 
-	void StartRunning() {
-		std::cout << name << " has started running!\n";
-	}
-	void StopRunning() {
-		std::cout << name << " has stopped running!\n";
-	}
+	void StartRunning();
+	void StopRunning();
 
-	void WatchTV() {
-		std::cout << name << " is watching TV!\n";
-	}
+	void WatchTV();
 };
