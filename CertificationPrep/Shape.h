@@ -17,10 +17,16 @@ protected:
 
 public:
 	Shape() { color = "black"; count++; }
-	Shape(std::string c) { color = c; count++; }
-	~Shape() { count--; }
+	explicit Shape(std::string c) { color = c; count++; }
 
-	std::string GetColor() { return color; }
+	// Define all five special member functions to follow the rule of five
+	~Shape() { count--; }
+	Shape(const Shape&) = delete;
+	Shape(Shape&&) = delete;
+	auto operator=(const Shape&) -> Shape& = delete;
+	auto operator=(Shape&&) -> Shape& = delete;
+
+	auto GetColor() -> std::string { return color; }
 	void SetColor(std::string c) { color = c; }
 
 	static int GetCount() { return count; }

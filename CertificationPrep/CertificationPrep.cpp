@@ -29,7 +29,7 @@ int main()
 	std::cout << "Enter 3 to focus on interfaces with running.\n";
 	std::cout << "Enter 4 to focus on iterators, aggregates, and functions as arguments.\n";
 
-	int feature;
+	int feature = 0;
 	std::cin >> feature;
 	std::cout << std::endl;
 
@@ -54,7 +54,7 @@ int main()
 void DemonstrateClass() {
 	std::string color;
 
-	int radius;
+	int radius = 0;
 	std::cout << "Creating a circle object...\n";
 	std::cout << "Enter the color of the circle: ";
 	std::cin >> color;
@@ -63,7 +63,7 @@ void DemonstrateClass() {
 	Circle circle1(radius, color);
 	std::cout << std::endl;
 
-	int side;
+	int side = 0;
 	std::cout << "Creating a square object...\n";
 	std::cout << "Enter the color of the square: ";
 	std::cin >> color;
@@ -72,8 +72,8 @@ void DemonstrateClass() {
 	Square square1(side, color);
 	std::cout << std::endl;
 
-	int base;
-	int height;
+	int base = 0;
+	int height = 0;
 	std::cout << "Creating a triangle object...\n";
 	std::cout << "Enter the color of the square: ";
 	std::cin >> color;
@@ -123,7 +123,7 @@ void DemonstrateDynamicDispatch() {
 	std::cout << "The jet goes " << jet1.MakeSound() << std::endl;
 
 	std::cout << "Creating a mystery vehicle...\n\n";
-	Vehicle* mysteryVehicle = NULL;
+	Vehicle* mysteryVehicle = nullptr;
 
 	std::cout << "Altering the mystery vehicle...\n";
 	mysteryVehicle = &vehicle1;
@@ -174,7 +174,7 @@ void DemonstrateInterface() {
 }
 
 void DemonstrateAggregate() {
-	int arrayLength;
+	int arrayLength = 0;
 
 	std::cout << "Creating an array of integers...\n";
 	std::cout << "Enter the number of elements you would like to have in the array: ";

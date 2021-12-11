@@ -78,6 +78,9 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <EnableClangTidyCodeAnalysis>true</EnableClangTidyCodeAnalysis>
+    <CodeAnalysisRuleSet>CorePlusRecommended.ruleset</CodeAnalysisRuleSet>
+    <ClangTidyChecks>bugprone*, cppcoreguidelines*, google*, modernize*, readability*</ClangTidyChecks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -144,24 +147,24 @@
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="Square.cpp" />
     <ClCompile Include="Triangle.cpp" />
-	<ClCompile Include="Vehicle.cpp" />
-	<ClCompile Include="Car.cpp" />
-	<ClCompile Include="Jet.cpp" />
-	<ClCompile Include="Run.cpp" />
-	<ClCompile Include="Human.cpp" />
-	<ClCompile Include="Cheetah.cpp" />
+    <ClCompile Include="Vehicle.cpp" />
+    <ClCompile Include="Car.cpp" />
+    <ClCompile Include="Jet.cpp" />
+    <ClCompile Include="Run.cpp" />
+    <ClCompile Include="Human.cpp" />
+    <ClCompile Include="Cheetah.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Circle.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="Square.h" />
     <ClInclude Include="Triangle.h" />
-	<ClInclude Include="Vehicle.h" />
-	<ClInclude Include="Car.h" />
-	<ClInclude Include="Jet.h" />
-	<ClInclude Include="Run.h" />
-	<ClInclude Include="Human.h" />
-	<ClInclude Include="Cheetah.h" />
+    <ClInclude Include="Vehicle.h" />
+    <ClInclude Include="Car.h" />
+    <ClInclude Include="Jet.h" />
+    <ClInclude Include="Run.h" />
+    <ClInclude Include="Human.h" />
+    <ClInclude Include="Cheetah.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

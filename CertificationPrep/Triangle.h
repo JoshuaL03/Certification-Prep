@@ -4,21 +4,21 @@
 class Triangle : public Shape
 {
 private:
-	double base;
-	double height;
+	double base = 1;
+	double height = 1;
 
 public:
-	Triangle() : base(1), height(1) {};
+	Triangle() = default;
 	Triangle(double b, double h) : base(b), height(h) {};
 	Triangle(double b, double h, std::string c) : Shape(c), base(b), height(h) {};
 
-	double GetBase() { return base; }
-	void SetBase(double b) { base = b; }
+	auto GetBase() noexcept -> double { return base; }
+	void SetBase(double b) noexcept { base = b; }
 
-	double GetHeight() { return height; }
-	void SetHeight(double h) { height = h; }
+	auto GetHeight() noexcept -> double { return height; }
+	void SetHeight(double h) noexcept { height = h; }
 
-	double CalculateArea();
+	auto CalculateArea() -> double;
 	// The perimeter cannot be calculated only given base and height
 };
 
