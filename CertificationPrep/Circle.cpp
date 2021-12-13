@@ -1,9 +1,9 @@
 #include "Circle.h"
 
-double Circle::CalculateArea() {
+auto Circle::CalculateArea() const noexcept -> double {
 	return M_PI * pow(radius, 2);
 }
 
-double Circle::CalculateCircumference() {
+auto Circle::CalculateCircumference() const noexcept -> double {
 	return 2 * M_PI * radius;
 }

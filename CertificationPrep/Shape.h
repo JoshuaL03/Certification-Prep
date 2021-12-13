@@ -1,8 +1,10 @@
-#pragma once
+#ifndef SHAPE_H
+#define SHAPE_H
+
+#define _USE_MATH_DEFINES
+#include <cmath>
 #include <iostream>
 #include <string>
-#define _USE_MATH_DEFINES
-#include <math.h>
 
 // The procedural/functional approach uses functions to handle data, while the 
 // object-oriented approach uses objects to contain and handle data (encapsulation). 
@@ -11,12 +13,12 @@
 
 class Shape
 {
-protected:
+private:
 	std::string color;
 	static int count;
 
 public:
-	Shape() { color = "black"; count++; }
+	Shape() noexcept { color = "black"; count++; }
 	explicit Shape(std::string c) { color = c; count++; }
 
 	// Define all five special member functions to follow the rule of five
@@ -29,5 +31,7 @@ public:
 	auto GetColor() -> std::string { return color; }
 	void SetColor(std::string c) { color = c; }
 
-	static int GetCount() { return count; }
+	static auto GetCount() noexcept -> int { return count; }
 };
+
+#endif

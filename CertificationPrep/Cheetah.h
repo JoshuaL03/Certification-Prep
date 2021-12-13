@@ -1,4 +1,6 @@
-#pragma once
+#ifndef CHEETAH_H
+#define CHEETAH_H
+
 #include "Run.h"
 
 class Cheetah : public Run
@@ -7,13 +9,15 @@ private:
 	std::string preferredPrey;
 
 public:
-	Cheetah(std::string prey) : preferredPrey(prey) {}
+	explicit Cheetah(std::string prey) : preferredPrey(prey) {}
 
 	void SetPreferredPrey(std::string prey) { preferredPrey = prey; }
-	std::string GetPreferredPrey() { return preferredPrey; }
+	auto GetPreferredPrey() -> std::string { return preferredPrey; }
 
-	void StartRunning();
-	void StopRunning();
+	void StartRunning() override;
+	void StopRunning() override;
 
 	void Hunt();
 };
+
+#endif

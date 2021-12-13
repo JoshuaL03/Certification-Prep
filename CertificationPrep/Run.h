@@ -1,4 +1,6 @@
-#pragma once
+#ifndef RUN_H
+#define RUN_H
+
 #include <iostream>
 #include <string>
 
@@ -11,3 +13,5 @@ public:
 	virtual void StartRunning() = 0;
 	virtual void StopRunning() = 0;
 };
+
+#endif

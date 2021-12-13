@@ -1,4 +1,6 @@
-#pragma once
+#ifndef CIRCLE_H
+#define CIRCLE_H
+
 #include "Shape.h"
 
 // Classes inherited in public visibility mode have their public members visible to all,
@@ -17,13 +19,15 @@ private:
 	double radius;
 
 public:
-	Circle() { radius = 1; }
-	Circle(double r) { radius = r; }
+	Circle() noexcept{ radius = 1; }
+	explicit Circle(double r) noexcept { radius = r; }
 	Circle(double r, std::string c) : Shape(c), radius(r) {};
 
-	double GetRadius() { return radius; }
-	void SetRadius(double r) { radius = r; }
+	auto GetRadius() const noexcept -> double { return radius; }
+	void SetRadius(double r) noexcept { radius = r; }
 
-	double CalculateArea();
-	double CalculateCircumference();
+	auto CalculateArea() const noexcept -> double;
+	auto CalculateCircumference() const noexcept-> double;
 };
+
+#endif

@@ -1,4 +1,6 @@
-#pragma once
+#ifndef SQUARE_H
+#define SQUARE_H
+
 #include "Shape.h"
 
 class Square : public Shape
@@ -7,14 +9,15 @@ private:
 	double side;
 
 public:
-	Square() { side = 1; }
-	Square(double s) { side = s; }
+	Square() noexcept { side = 1; }
+	explicit Square(double s) noexcept : side(s) {};
 	Square(double s, std::string c) : Shape(c), side(s) {};
 
-	double GetSide() { return side; }
-	void SetSide(double s) { side = s; }
+	auto GetSide() const noexcept -> double { return side; }
+	void SetSide(double s) noexcept { side = s; }
 
-	double CalculateArea();
-	double CalculatePerimeter();
+	auto CalculateArea() const noexcept -> double;
+	auto CalculatePerimeter() const noexcept -> double;
 };
 
+#endif

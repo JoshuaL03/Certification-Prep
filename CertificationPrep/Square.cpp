@@ -1,9 +1,9 @@
 #include "Square.h"
 
-double Square::CalculateArea() {
-	return pow(side, 2);
+auto Square::CalculateArea() const noexcept -> double {
+	return side * side;
 }
 
-double Square::CalculatePerimeter() {
+auto Square::CalculatePerimeter() const noexcept -> double {
 	return 4 * side;
 }

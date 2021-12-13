@@ -1,5 +1,5 @@
 #include "Car.h"
 
-std::string Car::MakeSound() {
+auto Car::MakeSound() -> std::string {
 	return "Vroom!\n";
 }

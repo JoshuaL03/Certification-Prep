@@ -1,5 +1,5 @@
 #include "Jet.h"
 
-std::string Jet::MakeSound() {
+auto Jet::MakeSound() -> std::string {
 	return "Whoosh!\n";
 }
