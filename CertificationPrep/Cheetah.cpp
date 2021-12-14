@@ -9,5 +9,5 @@ void Cheetah::StopRunning() {
 }
 
 void Cheetah::Hunt() {
-	std::cout << "The cheetah is hunting!\n";
+	std::cout << "The cheetah is hunting for " << preferredPrey << "!\n";
 }

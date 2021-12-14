@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <array>
 #include "Shape.h"
 #include "Circle.h"
 #include "Square.h"
@@ -15,13 +16,17 @@ void DemonstrateClass();
 void DemonstrateDynamicDispatch();
 void DemonstrateInterface();
 void DemonstrateAggregate();
-int AddArray(int*, int);
-int MultiplyArray(int*, int);
-int DoMath(int*, int, int (*)(int*, int));
 
-int Shape::count = 0;
+template<size_t length>
+auto AddArray(std::array<int, length> array) noexcept -> int;
 
-int main()
+template<size_t length>
+auto MultiplyArray(std::array<int, length> array) noexcept -> int;
+
+template<size_t length>
+auto DoMath(std::array<int, length> array, int (*operation)(std::array<int, length>)) noexcept -> int;
+
+auto main() -> int
 {
 	std::cout << "What feature would you primarily like to work with?\n\n";
 	std::cout << "Enter 1 to focus on classes and subclasses with shapes.\n";
@@ -89,7 +94,7 @@ void DemonstrateClass() {
 	std::cout << "Editing the circle's radius...\n\n";
 	circle2.SetRadius(2);
 
-	std::cout << "There are currently " << Shape::GetCount() << " shapes:\n";
+	std::cout << "Retrieving the shapes' information...\n";
 
 	// Output the first circle's information
 	std::cout << "The " << circle1.GetColor() << " circle has area " << circle1.CalculateArea();
@@ -124,20 +129,38 @@ void DemonstrateDynamicDispatch() {
 
 	std::cout << "Creating a mystery vehicle...\n\n";
 	Vehicle* mysteryVehicle = nullptr;
+	// Test the mysteryvehicle for nullness to prevent the need for gsl::not_null
+	if (mysteryVehicle == nullptr) {};
 
-	std::cout << "Altering the mystery vehicle...\n";
+	std::cout << "Altering mystery vehicle...\n";
 	mysteryVehicle = &vehicle1;
-	std::cout << "The mystery vehicle goes " << mysteryVehicle->MakeSound() << std::endl;
+	if (mysteryVehicle != nullptr) {
+		std::cout << "The mystery vehicle goes " << mysteryVehicle->MakeSound() << std::endl;
+	}
+	else {
+		std::cout << "The mystery vehicle does not make a sound. It must be broken!\n\n";
+	}
+
 
 	std::cout << "Altering the mystery vehicle again...\n";
 	// Make the mysteryVehicle point to a Car object, giving it access to a different MakeSound function
 	mysteryVehicle = &car1;
-	std::cout << "The mystery vehicle goes " << mysteryVehicle->MakeSound() << std::endl;
+	if (mysteryVehicle != nullptr) {
+		std::cout << "The mystery vehicle goes " << mysteryVehicle->MakeSound() << std::endl;
+	}
+	else {
+		std::cout << "The mystery vehicle does not make a sound. It must be broken!\n\n";
+	}
 
 	std::cout << "Altering the mystery vehicle once more...\n";
 	// Make the mysteryVehicle point to a Jet object, giving it access to another MakeSound function
 	mysteryVehicle = &jet1;
-	std::cout << "The mystery vehicle goes " << mysteryVehicle->MakeSound() << std::endl;
+	if (mysteryVehicle != nullptr) {
+		std::cout << "The mystery vehicle goes " << mysteryVehicle->MakeSound() << std::endl;
+	}
+	else {
+		std::cout << "The mystery vehicle does not make a sound. It must be broken!\n\n";
+	}
 
 	// Object-oriented inheritance is what allows subtyping to occur.
 	// The subtype has all of the methods and fields that its supertype has (due to inheritance),
@@ -174,12 +197,11 @@ void DemonstrateInterface() {
 }
 
 void DemonstrateAggregate() {
-	int arrayLength = 0;
 
-	std::cout << "Creating an array of integers...\n";
-	std::cout << "Enter the number of elements you would like to have in the array: ";
-	std::cin >> arrayLength;
-	int* intArray = new int[arrayLength];
+	std::cout << "Creating an array of 5 integers...\n";
+	constexpr size_t arrayLength = 5;
+	// Use std::array instead of a C-style array to meet the C++ Core Guidelines
+	std::array<int, arrayLength> intArray = {0, 0, 0, 0, 0};
 
 	std::cout << "Assigning values to the array...\n";
 	for (int i = 0; i < arrayLength; i++) {
@@ -190,37 +212,41 @@ void DemonstrateAggregate() {
 	std::cout << "\nThe finished array is {";
 	for (int i = 0; i < arrayLength; i++) {
 		std::cout << intArray[i];
-		if (i < arrayLength - 1)
+		if (i < arrayLength - 1) {
 			std::cout << ", ";
+		}
 	}
 	std::cout << "}\n";
 
 	std::cout << "\nThe sum of all the elements in the array is ";
-	std::cout << DoMath(intArray, arrayLength, &AddArray) << std::endl;
+	std::cout << DoMath(intArray, &AddArray) << std::endl;
 
 	std::cout << "\nThe product of all the elements in the array is ";
-	std::cout << DoMath(intArray, arrayLength, &MultiplyArray) << std::endl;
-
-	delete intArray;
+	std::cout << DoMath(intArray, &MultiplyArray) << std::endl;
 }
 
-int AddArray(int* array, int length) {
+// A template is used to keep the function general and increase reusability
+// https://stackoverflow.com/questions/17156282/passing-a-stdarray-of-unknown-size-to-a-function
+template<size_t length>
+auto AddArray(std::array<int, length> array) noexcept -> int {
 	int sum = 0;
 	for (int i = 0; i < length; i++) {
-		sum += *(array + i);
+		sum += array[i];
 	}
 	return sum;
 }
 
-int MultiplyArray(int* array, int length) {
+template<size_t length>
+auto MultiplyArray(std::array<int, length> array) noexcept -> int {
 	int product = 1;
 	for (int i = 0; i < length; i++) {
-		product *= *(array + i);
+		product *= array[i];
 	}
 	return product;
 }
 
 // Take the AddArray or MultiplyArray functions as arguments
-int DoMath(int* array, int length, int (*operation)(int*, int)) {
-	return operation(array, length);
+template<size_t length>
+auto DoMath(std::array<int, length> array, int (*operation)(std::array<int, length>)) noexcept -> int {
+	return (*operation)(array);
 }
