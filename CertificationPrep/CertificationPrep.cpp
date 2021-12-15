@@ -18,13 +18,13 @@ void DemonstrateInterface();
 void DemonstrateAggregate();
 
 template<size_t length>
-auto AddArray(std::array<int, length> array) noexcept -> int;
+auto AddArray(const std::array<int, length>& array) noexcept -> int;
 
 template<size_t length>
-auto MultiplyArray(std::array<int, length> array) noexcept -> int;
+auto MultiplyArray(const std::array<int, length>& array) noexcept -> int;
 
 template<size_t length>
-auto DoMath(std::array<int, length> array, int (*operation)(std::array<int, length>)) noexcept -> int;
+auto DoMath(const std::array<int, length>& array, int (&operation)(const std::array<int, length>&)) noexcept -> int;
 
 auto main() -> int
 {
@@ -221,16 +221,16 @@ void DemonstrateAggregate() {
 	std::cout << "}\n";
 
 	std::cout << "\nThe sum of all the elements in the array is ";
-	std::cout << DoMath(intArray, &AddArray) << std::endl;
+	std::cout << DoMath(intArray, AddArray) << std::endl;
 
 	std::cout << "\nThe product of all the elements in the array is ";
-	std::cout << DoMath(intArray, &MultiplyArray) << std::endl;
+	std::cout << DoMath(intArray, MultiplyArray) << std::endl;
 }
 
 // A template is used to keep the function general and increase reusability
 // https://stackoverflow.com/questions/17156282/passing-a-stdarray-of-unknown-size-to-a-function
 template<size_t length>
-auto AddArray(std::array<int, length> array) noexcept -> int {
+auto AddArray(const std::array<int, length>& array) noexcept -> int {
 	int sum = 0;
 	for (auto& element : array) {
 		sum += element;
@@ -239,7 +239,7 @@ auto AddArray(std::array<int, length> array) noexcept -> int {
 }
 
 template<size_t length>
-auto MultiplyArray(std::array<int, length> array) noexcept -> int {
+auto MultiplyArray(const std::array<int, length>& array) noexcept -> int {
 	int product = 1;
 	for (auto& element : array) {
 		product *= element;
@@ -249,6 +249,6 @@ auto MultiplyArray(std::array<int, length> array) noexcept -> int {
 
 // Take the AddArray or MultiplyArray functions as arguments
 template<size_t length>
-auto DoMath(std::array<int, length> array, int (*operation)(std::array<int, length>)) noexcept -> int{
-	return (*operation)(array);
+auto DoMath(const std::array<int, length>& array, int (&operation)(const std::array<int, length>&)) noexcept -> int{
+	return operation(array);
 }

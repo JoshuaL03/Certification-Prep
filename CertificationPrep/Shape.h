@@ -1,11 +1,8 @@
 #ifndef SHAPE_H
 #define SHAPE_H
 
-#define _USE_MATH_DEFINES
-#include <cmath>
 #include <iostream>
 #include <string>
-#include <numbers>
 
 // The procedural/functional approach uses functions to handle data, while the 
 // object-oriented approach uses objects to contain and handle data (encapsulation). 
