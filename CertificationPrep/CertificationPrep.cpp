@@ -80,7 +80,7 @@ void DemonstrateClass() {
 	int base = 0;
 	int height = 0;
 	std::cout << "Creating a triangle object...\n";
-	std::cout << "Enter the color of the square: ";
+	std::cout << "Enter the color of the triangle: ";
 	std::cin >> color;
 	std::cout << "Enter the base of the triangle: ";
 	std::cin >> base;
@@ -201,18 +201,20 @@ void DemonstrateAggregate() {
 	std::cout << "Creating an array of 5 integers...\n";
 	constexpr size_t arrayLength = 5;
 	// Use std::array instead of a C-style array to meet the C++ Core Guidelines
-	std::array<int, arrayLength> intArray = {0, 0, 0, 0, 0};
+	std::array<int, arrayLength> intArray = { 0, 0, 0, 0, 0 };
 
 	std::cout << "Assigning values to the array...\n";
-	for (int i = 0; i < arrayLength; i++) {
-		std::cout << "Enter the value for element " << i << ": ";
-		std::cin >> intArray[i];
+	// Assign values to the array using a range-based for loop to avoid directly indexing the array
+	// https://stackoverflow.com/questions/47366755/how-to-eliminate-only-index-into-arrays-using-constant-expressions-warning
+	for (auto& element : intArray) {
+		std::cout << "Enter the value for element " << &element - intArray.data() << ": "; // intArray.data() returns the address of element zero of the array
+		std::cin >> element;
 	}
 
 	std::cout << "\nThe finished array is {";
-	for (int i = 0; i < arrayLength; i++) {
-		std::cout << intArray[i];
-		if (i < arrayLength - 1) {
+	for (auto& element : intArray) {
+		std::cout << element;
+		if (&element - intArray.data() < arrayLength - 1) {
 			std::cout << ", ";
 		}
 	}
@@ -230,8 +232,8 @@ void DemonstrateAggregate() {
 template<size_t length>
 auto AddArray(std::array<int, length> array) noexcept -> int {
 	int sum = 0;
-	for (int i = 0; i < length; i++) {
-		sum += array[i];
+	for (auto& element : array) {
+		sum += element;
 	}
 	return sum;
 }
@@ -239,14 +241,14 @@ auto AddArray(std::array<int, length> array) noexcept -> int {
 template<size_t length>
 auto MultiplyArray(std::array<int, length> array) noexcept -> int {
 	int product = 1;
-	for (int i = 0; i < length; i++) {
-		product *= array[i];
+	for (auto& element : array) {
+		product *= element;
 	}
 	return product;
 }
 
 // Take the AddArray or MultiplyArray functions as arguments
 template<size_t length>
-auto DoMath(std::array<int, length> array, int (*operation)(std::array<int, length>)) noexcept -> int {
+auto DoMath(std::array<int, length> array, int (*operation)(std::array<int, length>)) noexcept -> int{
 	return (*operation)(array);
 }
