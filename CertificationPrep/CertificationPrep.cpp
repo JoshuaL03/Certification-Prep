@@ -1,3 +1,13 @@
+/** @file CertificationPrep.cpp
+ *  @brief Contains all of the project's main functions.
+ *
+ *  It attempts to demonstrate various elements of object-oriented programming,
+ *  as well as cover some topics that will be covered on the CPA exam.
+ *
+ *  @author Joshua Lopez
+ *  @bugs   No known bugs.
+ */
+
 #include <array>
 #include <exception>
 #include <iostream>
@@ -15,27 +25,85 @@
 #include "Triangle.h"
 #include "Vehicle.h"
 
+/** @brief Incorporates classes and subclasses with inheritance
+ *         using shapes.
+ */
 void DemonstrateClass();
+
+/** @brief Uses dynamic dispatching and subtyping with vehicles.
+ *
+ */
 void DemonstrateDynamicDispatch();
+
+/** @brief Demonstrates interfaces with humans and cheetahs, using
+ *         running as the common link/interface between the two.
+ */
 void DemonstrateInterface();
+
+/** @brief Utilizes std::array as an aggregate, finding both the product
+ *         and sum of all the elements with references to functions.
+ */
 void DemonstrateAggregate();
 
+/** @brief Ignores excess input, clearing it out of the buffer.
+ *
+ */
 void ignoreLine();
 
+/** @brief Finds the sum of all elements in an array.
+ *
+ *  It uses a template to account for various array lengths.
+ *
+ *  @param array The array to have its elements added.
+ *  @return The sum of the elements in the array.
+ */
 template <size_t length>
 auto AddArray(const std::array<int, length>& array) noexcept -> int;
 
+/** @brief Finds the product of all elements in an array.
+ *
+ *  It uses a template to account for various array lengths.
+ *
+ *  @param array The array to have its elements myltiplied.
+ *  @return The product of the elements in the array.
+ */
 template <size_t length>
 auto MultiplyArray(const std::array<int, length>& array) noexcept -> int;
 
+/** @brief Passes an array to a reference to a function.
+ *
+ *  It uses a template to account for various array lengths.
+ *
+ *  @param array The array to be passed to the referenced function.
+ *  @param operation The referenced function to be called.
+ *  @return The return value of the referenced function.
+ */
 template <size_t length>
 auto DoMath(const std::array<int, length>& array,
             int (&operation)(const std::array<int, length>&)) noexcept -> int;
 
+/** @brief Prompts the user for the color of a shape.
+ *
+ *  It uses exception handling to ensure the inputted color is correct.
+ *
+ *  @return The color of the shape.
+ */
 auto SetShapeColor() -> std::string;
 
+/** @brief Prompts the user for the dimension of a shape.
+ *
+ *  Dimension refers to any of a shapes' measurements, such as a square's
+ *  side length or a circle's radius. It uses exception handling to ensure the
+ *  inputted dimension is correct.
+ *
+ *  @return The dimension of the shape
+ */
 auto SetShapeDimension() -> double;
 
+/**
+ * @brief Starts program execution.
+ * @return The exit code (normally zero).
+ */
 auto main() -> int {
   try {
     bool continueExecution = true;
@@ -305,8 +373,7 @@ void DemonstrateAggregate() {
   std::cout << std::endl << std::endl;
 }
 
-// Ignore excess input, clearing it out of the buffer. The code is stored in a
-// function for ease of use.
+// The code is stored in a function for ease of use.
 // https://www.learncpp.com/cpp-tutorial/stdcin-and-handling-invalid-input/
 void ignoreLine() {
   std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
