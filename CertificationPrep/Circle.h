@@ -1,3 +1,7 @@
+/** @brief Derived class of Shape. 
+ * 
+ */
+
 #ifndef CIRCLE_H
 #define CIRCLE_H
 
