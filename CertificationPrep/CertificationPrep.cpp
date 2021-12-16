@@ -78,6 +78,7 @@ auto main() -> int {
   }
 }
 
+// LO1, LO2
 void DemonstrateClass() {
   std::string color;
 
@@ -139,6 +140,7 @@ void DemonstrateClass() {
   std::cout << std::endl << std::endl;
 }
 
+// LO3
 void DemonstrateDynamicDispatch() {
   std::cout << "Creating a vehicle...\n";
   Vehicle vehicle1;
@@ -194,6 +196,7 @@ void DemonstrateDynamicDispatch() {
 
   std::cout << std::endl;
 
+  // LO5
   // Object-oriented inheritance is what allows subtyping to occur.
   // The subtype has all of the methods and fields that its supertype has (due
   // to inheritance), so it can be used in various situations where the
@@ -201,6 +204,7 @@ void DemonstrateDynamicDispatch() {
   // overridden by functions in the subtype using virtual functions.
 }
 
+// LO6
 void DemonstrateInterface() {
   // Humans and cheetahs are not very similar, but they both run.
   // They can both inherit from an interface class called Run.
@@ -231,6 +235,7 @@ void DemonstrateInterface() {
   std::cout << std::endl << std::endl;
 }
 
+// LO7
 void DemonstrateAggregate() {
   std::cout << "Creating an array of 5 integers...\n";
   constexpr size_t arrayLength = 5;
@@ -327,6 +332,7 @@ auto MultiplyArray(const std::array<int, length>& array) noexcept -> int {
   return product;
 }
 
+// LO7
 // Take the AddArray or MultiplyArray functions as arguments
 template <size_t length>
 auto DoMath(const std::array<int, length>& array,

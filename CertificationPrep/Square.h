@@ -12,11 +12,11 @@ class Square : public Shape {
   explicit Square(double s) noexcept : side(s){};
   Square(double s, std::string c) : Shape(c), side(s){};
 
-  auto GetSide() const noexcept -> double { return side; }
+  [[nodiscard]] auto GetSide() const noexcept -> double { return side; }
   void SetSide(double s) noexcept { side = s; }
 
-  auto CalculateArea() const noexcept -> double;
-  auto CalculatePerimeter() const noexcept -> double;
+  [[nodiscard]] auto CalculateArea() const noexcept -> double;
+  [[nodiscard]] auto CalculatePerimeter() const noexcept -> double;
 };
 
 #endif

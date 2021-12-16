@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 
+// LO4
 // The procedural/functional approach uses functions to handle data, while the
 // object-oriented approach uses objects to contain and handle data
 // (encapsulation). Unlike the procedural approach, the object-oriented approach
@@ -15,6 +16,7 @@ class Shape {
   std::string color = "black";
 
  public:
+  // LO1b
   Shape() = default;
   explicit Shape(const std::string c) : color(c){};
 

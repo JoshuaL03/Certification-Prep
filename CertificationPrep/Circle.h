@@ -3,6 +3,7 @@
 
 #include "Shape.h"
 
+// LO2a
 // Classes inherited in public visibility mode have their public members visible
 // to all, their protected members visible to the derived class, and their
 // private members invisible to all
@@ -15,6 +16,7 @@
 // members visible only to the directly derived class (they become private
 // members of that class), and private members invisible to all
 
+// LO2
 class Circle : public Shape {
  private:
   double radius;
@@ -24,11 +26,12 @@ class Circle : public Shape {
   explicit Circle(double r) noexcept { radius = r; }
   Circle(double r, std::string c) : Shape(c), radius(r){};
 
-  auto GetRadius() const noexcept -> double { return radius; }
+  [[nodiscard]] auto GetRadius() const noexcept -> double { return radius; }
   void SetRadius(double r) noexcept { radius = r; }
 
-  auto CalculateArea() const noexcept -> double;
-  auto CalculateCircumference() const noexcept -> double;
+  // LO1a
+  [[nodiscard]] auto CalculateArea() const noexcept -> double;
+  [[nodiscard]] auto CalculateCircumference() const noexcept -> double;
 };
 
 #endif

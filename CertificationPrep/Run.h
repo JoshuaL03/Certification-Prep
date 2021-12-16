@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 
+// LO6
+// Run is an interface with no fields and only pure virtual methods
 class Run {
  private:
   // An interface has no fields.

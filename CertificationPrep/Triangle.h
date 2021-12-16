@@ -5,6 +5,7 @@
 
 class Triangle : public Shape {
  private:
+  // LO6
   double base;
   double height;
 
@@ -14,15 +15,16 @@ class Triangle : public Shape {
     height = 1;
   }
   Triangle(double b, double h) noexcept : base(b), height(h){};
+  // LO1c
   Triangle(double b, double h, std::string c) : Shape(c), base(b), height(h){};
 
-  auto GetBase() const noexcept -> double { return base; }
+  [[nodiscard]] auto GetBase() const noexcept -> double { return base; }
   void SetBase(double b) noexcept { base = b; }
 
-  auto GetHeight() const noexcept -> double { return height; }
+  [[nodiscard]] auto GetHeight() const noexcept -> double { return height; }
   void SetHeight(double h) noexcept { height = h; }
 
-  auto CalculateArea() const noexcept -> double;
+  [[nodiscard]] auto CalculateArea() const noexcept -> double;
   // The perimeter cannot be calculated only given base and height
 };
 

@@ -8,7 +8,7 @@ class Cheetah : public Run {
   std::string preferredPrey;
 
  public:
-  explicit Cheetah(std::string prey) : preferredPrey(prey) {}
+  explicit Cheetah(std::string prey) noexcept : preferredPrey(std::move(prey)) {}
 
   void SetPreferredPrey(std::string prey) { preferredPrey = prey; }
   auto GetPreferredPrey() -> std::string { return preferredPrey; }

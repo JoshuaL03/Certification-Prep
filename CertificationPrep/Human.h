@@ -8,7 +8,7 @@ class Human : public Run {
   std::string name;
 
  public:
-  explicit Human(std::string n) : name(n) {}
+  explicit Human(std::string n) noexcept : name(std::move(n)) {}
 
   void SetName(std::string n) { name = n; }
   auto GetName() -> std::string { return name; }
