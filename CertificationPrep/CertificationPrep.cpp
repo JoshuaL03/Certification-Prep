@@ -109,7 +109,7 @@ auto main() -> int {
     bool continueExecution = true;
 
     while (continueExecution) {
-      std::cout << "What feature would you primarily like to work with?\n\n";
+      std::cout << "What feature would you like to work with?\n\n";
       std::cout << "Enter 1 to focus on classes and subclasses with shapes.\n";
       std::cout << "Enter 2 to focus on dynamic dispatch and subtyping with "
                    "vehicles.\n";
@@ -137,13 +137,15 @@ auto main() -> int {
           break;
         default:
           std::cout
-              << "An invalid input was entered. The program will now end.\n";
+              << "A different input was entered. The program will now end.\n";
           continueExecution = false;
       }
     }
   } catch (...) {
     std::cout << "An error has occurred somewhere. The program will now end.\n";
+    return -1;
   }
+  return 0;
 }
 
 // LO1, LO2
@@ -444,12 +446,12 @@ auto SetShapeDimension() -> double {
       invalidInput = false;
     } catch (const std::runtime_error& e) {
       std::cout << e.what() << std::endl;
-      std::cout << "Please re-enter the dimension: ";
+      std::cout << "Please re-enter the dimension as a number (e.g. 1): ";
       std::cin.clear();
     } catch (...) {
       std::cout
           << "An error occurred while processing the dimension entered.\n";
-      std::cout << "Please re-enter the dimension: ";
+      std::cout << "Please re-enter the dimension as a number (e.g. 1): ";
       std::cin.clear();
     }
   }

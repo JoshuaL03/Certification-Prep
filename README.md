@@ -9,7 +9,7 @@ Solution error list using Code Analysis and Clang-Tidy:
 ![Error List with Code Analysis](https://github.com/JoshuaL03/Certification-Prep/blob/main/Error%20List.png)
 
 ## Demonstration
-
+![Demonstration](https://github.com/JoshuaL03/Certification-Prep/blob/main/Demonstration.gif)
 
 ## Documentation/Diagrams
 [Doxygen](https://joshual03.github.io/Certification-Prep/html/)
