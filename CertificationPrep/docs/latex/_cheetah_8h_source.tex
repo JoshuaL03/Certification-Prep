@@ -1,0 +1,28 @@
+\hypertarget{_cheetah_8h_source}{}\doxysection{Cheetah.\+h}
+\label{_cheetah_8h_source}\index{C:/Users/lopez/source/repos/JoshuaL03/Certification-\/Prep/CertificationPrep/Cheetah.h@{C:/Users/lopez/source/repos/JoshuaL03/Certification-\/Prep/CertificationPrep/Cheetah.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef CHEETAH\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define CHEETAH\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}Run.h"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{class }\mbox{\hyperlink{class_cheetah}{Cheetah}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_run}{Run}} \{}
+\DoxyCodeLine{7  \textcolor{keyword}{private}:}
+\DoxyCodeLine{8   std::string preferredPrey;}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10  \textcolor{keyword}{public}:}
+\DoxyCodeLine{11   \textcolor{keyword}{explicit} \mbox{\hyperlink{class_cheetah}{Cheetah}}(std::string prey) noexcept : preferredPrey(std::move(prey)) \{\}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13   \textcolor{keywordtype}{void} SetPreferredPrey(std::string prey) \{ preferredPrey = prey; \}}
+\DoxyCodeLine{14   \textcolor{keyword}{auto} GetPreferredPrey() -\/> std::string \{ \textcolor{keywordflow}{return} preferredPrey; \}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16   \textcolor{keywordtype}{void} StartRunning() \textcolor{keyword}{override};}
+\DoxyCodeLine{17   \textcolor{keywordtype}{void} StopRunning() \textcolor{keyword}{override};}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19   \textcolor{keywordtype}{void} Hunt();}
+\DoxyCodeLine{20 \};}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

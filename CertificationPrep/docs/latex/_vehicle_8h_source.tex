@@ -1,0 +1,40 @@
+\hypertarget{_vehicle_8h_source}{}\doxysection{Vehicle.\+h}
+\label{_vehicle_8h_source}\index{C:/Users/lopez/source/repos/JoshuaL03/Certification-\/Prep/CertificationPrep/Vehicle.h@{C:/Users/lopez/source/repos/JoshuaL03/Certification-\/Prep/CertificationPrep/Vehicle.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef VEHICLE\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define VEHICLE\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{class }\mbox{\hyperlink{class_vehicle}{Vehicle}} \{}
+\DoxyCodeLine{8  \textcolor{keyword}{private}:}
+\DoxyCodeLine{9   \textcolor{comment}{// No fields used for this example.}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11  \textcolor{keyword}{public}:}
+\DoxyCodeLine{12   \mbox{\hyperlink{class_vehicle}{Vehicle}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14   \textcolor{comment}{// A virtual destructor is necessary to ensure that pointers to the Vehicle}}
+\DoxyCodeLine{15   \textcolor{comment}{// class do not delete an object of one of its derived class types using the}}
+\DoxyCodeLine{16   \textcolor{comment}{// wrong destructor, which would result in undefined behavior.}}
+\DoxyCodeLine{17   \textcolor{comment}{// https://www.geeksforgeeks.org/virtual-\/destructor/}}
+\DoxyCodeLine{18   \textcolor{keyword}{virtual} \mbox{\hyperlink{class_vehicle}{\string~Vehicle}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20   \textcolor{comment}{// The other four special member functions are also defined to ensure the rule}}
+\DoxyCodeLine{21   \textcolor{comment}{// of five is followed.}}
+\DoxyCodeLine{22   \textcolor{comment}{// https://en.cppreference.com/w/cpp/language/rule\_of\_three}}
+\DoxyCodeLine{23   \textcolor{comment}{// Additionally, the move and copy functions (the other four) should be}}
+\DoxyCodeLine{24   \textcolor{comment}{// prohibited to prevent slicing.}}
+\DoxyCodeLine{25   \textcolor{comment}{// https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md}}
+\DoxyCodeLine{26   \mbox{\hyperlink{class_vehicle}{Vehicle}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_vehicle}{Vehicle}}\&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{27   \mbox{\hyperlink{class_vehicle}{Vehicle}}(\mbox{\hyperlink{class_vehicle}{Vehicle}}\&\&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{28   \textcolor{keyword}{auto} operator=(\textcolor{keyword}{const} \mbox{\hyperlink{class_vehicle}{Vehicle}}\&) -\/> \mbox{\hyperlink{class_vehicle}{Vehicle}}\& = \textcolor{keyword}{delete};}
+\DoxyCodeLine{29   \textcolor{keyword}{auto} operator=(\mbox{\hyperlink{class_vehicle}{Vehicle}}\&\&) -\/> \mbox{\hyperlink{class_vehicle}{Vehicle}}\& = \textcolor{keyword}{delete};}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31   \textcolor{keyword}{virtual} \textcolor{keyword}{auto} MakeSound() -\/> std::string;}
+\DoxyCodeLine{32 \};}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

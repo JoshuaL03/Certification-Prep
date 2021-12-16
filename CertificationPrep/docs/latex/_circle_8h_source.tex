@@ -1,0 +1,43 @@
+\hypertarget{_circle_8h_source}{}\doxysection{Circle.\+h}
+\label{_circle_8h_source}\index{C:/Users/lopez/source/repos/JoshuaL03/Certification-\/Prep/CertificationPrep/Circle.h@{C:/Users/lopez/source/repos/JoshuaL03/Certification-\/Prep/CertificationPrep/Circle.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef CIRCLE\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define CIRCLE\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}Shape.h"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{comment}{// LO2a}}
+\DoxyCodeLine{7 \textcolor{comment}{// Classes inherited in public visibility mode have their public members visible}}
+\DoxyCodeLine{8 \textcolor{comment}{// to all, their protected members visible to the derived class, and their}}
+\DoxyCodeLine{9 \textcolor{comment}{// private members invisible to all}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{comment}{// Classes inherited in protected visibility mode have their public and}}
+\DoxyCodeLine{12 \textcolor{comment}{// protected members visible to the derived class, and their private members}}
+\DoxyCodeLine{13 \textcolor{comment}{// invisible to all}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{comment}{// Classes inherited in private visibility mode have their public and protected}}
+\DoxyCodeLine{16 \textcolor{comment}{// members visible only to the directly derived class (they become private}}
+\DoxyCodeLine{17 \textcolor{comment}{// members of that class), and private members invisible to all}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{comment}{// LO2}}
+\DoxyCodeLine{20 \textcolor{keyword}{class }\mbox{\hyperlink{class_circle}{Circle}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_shape}{Shape}} \{}
+\DoxyCodeLine{21  \textcolor{keyword}{private}:}
+\DoxyCodeLine{22   \textcolor{keywordtype}{double} radius;}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24  \textcolor{keyword}{public}:}
+\DoxyCodeLine{25   \mbox{\hyperlink{class_circle}{Circle}}() \textcolor{keyword}{noexcept} \{ radius = 1; \}}
+\DoxyCodeLine{26   \textcolor{keyword}{explicit} \mbox{\hyperlink{class_circle}{Circle}}(\textcolor{keywordtype}{double} r) \textcolor{keyword}{noexcept} \{ radius = r; \}}
+\DoxyCodeLine{27   \mbox{\hyperlink{class_circle}{Circle}}(\textcolor{keywordtype}{double} r, std::string c) : \mbox{\hyperlink{class_shape}{Shape}}(c), radius(r)\{\};}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29   [[nodiscard]] \textcolor{keyword}{auto} GetRadius() \textcolor{keyword}{const} \textcolor{keyword}{noexcept} -\/> \textcolor{keywordtype}{double} \{ \textcolor{keywordflow}{return} radius; \}}
+\DoxyCodeLine{30   \textcolor{keywordtype}{void} SetRadius(\textcolor{keywordtype}{double} r) \textcolor{keyword}{noexcept} \{ radius = r; \}}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32   \textcolor{comment}{// LO1a}}
+\DoxyCodeLine{33   [[nodiscard]] \textcolor{keyword}{auto} CalculateArea() \textcolor{keyword}{const} \textcolor{keyword}{noexcept} -\/> double;}
+\DoxyCodeLine{34   [[nodiscard]] \textcolor{keyword}{auto} CalculateCircumference() \textcolor{keyword}{const} \textcolor{keyword}{noexcept} -\/> double;}
+\DoxyCodeLine{35 \};}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

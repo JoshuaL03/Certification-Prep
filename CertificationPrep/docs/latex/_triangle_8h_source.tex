@@ -1,0 +1,37 @@
+\hypertarget{_triangle_8h_source}{}\doxysection{Triangle.\+h}
+\label{_triangle_8h_source}\index{C:/Users/lopez/source/repos/JoshuaL03/Certification-\/Prep/CertificationPrep/Triangle.h@{C:/Users/lopez/source/repos/JoshuaL03/Certification-\/Prep/CertificationPrep/Triangle.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef TRIANGLE\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define TRIANGLE\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}Shape.h"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{class }\mbox{\hyperlink{class_triangle}{Triangle}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_shape}{Shape}} \{}
+\DoxyCodeLine{7  \textcolor{keyword}{private}:}
+\DoxyCodeLine{8   \textcolor{comment}{// LO6}}
+\DoxyCodeLine{9   \textcolor{keywordtype}{double} base;}
+\DoxyCodeLine{10   \textcolor{keywordtype}{double} height;}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12  \textcolor{keyword}{public}:}
+\DoxyCodeLine{13   \mbox{\hyperlink{class_triangle}{Triangle}}() \textcolor{keyword}{noexcept} \{}
+\DoxyCodeLine{14     base = 1;}
+\DoxyCodeLine{15     height = 1;}
+\DoxyCodeLine{16   \}}
+\DoxyCodeLine{17   \mbox{\hyperlink{class_triangle}{Triangle}}(\textcolor{keywordtype}{double} b, \textcolor{keywordtype}{double} h) noexcept : base(b), height(h)\{\};}
+\DoxyCodeLine{18   \textcolor{comment}{// LO1c}}
+\DoxyCodeLine{19   \mbox{\hyperlink{class_triangle}{Triangle}}(\textcolor{keywordtype}{double} b, \textcolor{keywordtype}{double} h, std::string c) : \mbox{\hyperlink{class_shape}{Shape}}(c), base(b), height(h)\{\};}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21   [[nodiscard]] \textcolor{keyword}{auto} GetBase() \textcolor{keyword}{const} \textcolor{keyword}{noexcept} -\/> \textcolor{keywordtype}{double} \{ \textcolor{keywordflow}{return} base; \}}
+\DoxyCodeLine{22   \textcolor{keywordtype}{void} SetBase(\textcolor{keywordtype}{double} b) \textcolor{keyword}{noexcept} \{ base = b; \}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24   [[nodiscard]] \textcolor{keyword}{auto} GetHeight() \textcolor{keyword}{const} \textcolor{keyword}{noexcept} -\/> \textcolor{keywordtype}{double} \{ \textcolor{keywordflow}{return} height; \}}
+\DoxyCodeLine{25   \textcolor{keywordtype}{void} SetHeight(\textcolor{keywordtype}{double} h) \textcolor{keyword}{noexcept} \{ height = h; \}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27   [[nodiscard]] \textcolor{keyword}{auto} CalculateArea() \textcolor{keyword}{const} \textcolor{keyword}{noexcept} -\/> double;}
+\DoxyCodeLine{28   \textcolor{comment}{// The perimeter cannot be calculated only given base and height}}
+\DoxyCodeLine{29 \};}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

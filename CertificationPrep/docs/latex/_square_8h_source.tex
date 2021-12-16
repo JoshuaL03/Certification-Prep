@@ -1,0 +1,28 @@
+\hypertarget{_square_8h_source}{}\doxysection{Square.\+h}
+\label{_square_8h_source}\index{C:/Users/lopez/source/repos/JoshuaL03/Certification-\/Prep/CertificationPrep/Square.h@{C:/Users/lopez/source/repos/JoshuaL03/Certification-\/Prep/CertificationPrep/Square.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef SQUARE\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define SQUARE\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}Shape.h"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{class }\mbox{\hyperlink{class_square}{Square}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_shape}{Shape}} \{}
+\DoxyCodeLine{7  \textcolor{keyword}{private}:}
+\DoxyCodeLine{8   \textcolor{keywordtype}{double} side;}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10  \textcolor{keyword}{public}:}
+\DoxyCodeLine{11   \mbox{\hyperlink{class_square}{Square}}() \textcolor{keyword}{noexcept} \{ side = 1; \}}
+\DoxyCodeLine{12   \textcolor{keyword}{explicit} \mbox{\hyperlink{class_square}{Square}}(\textcolor{keywordtype}{double} s) noexcept : side(s)\{\};}
+\DoxyCodeLine{13   \mbox{\hyperlink{class_square}{Square}}(\textcolor{keywordtype}{double} s, std::string c) : \mbox{\hyperlink{class_shape}{Shape}}(c), side(s)\{\};}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15   [[nodiscard]] \textcolor{keyword}{auto} GetSide() \textcolor{keyword}{const} \textcolor{keyword}{noexcept} -\/> \textcolor{keywordtype}{double} \{ \textcolor{keywordflow}{return} side; \}}
+\DoxyCodeLine{16   \textcolor{keywordtype}{void} SetSide(\textcolor{keywordtype}{double} s) \textcolor{keyword}{noexcept} \{ side = s; \}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18   [[nodiscard]] \textcolor{keyword}{auto} CalculateArea() \textcolor{keyword}{const} \textcolor{keyword}{noexcept} -\/> double;}
+\DoxyCodeLine{19   [[nodiscard]] \textcolor{keyword}{auto} CalculatePerimeter() \textcolor{keyword}{const} \textcolor{keyword}{noexcept} -\/> double;}
+\DoxyCodeLine{20 \};}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,33 @@
+\hypertarget{_shape_8h_source}{}\doxysection{Shape.\+h}
+\label{_shape_8h_source}\index{C:/Users/lopez/source/repos/JoshuaL03/Certification-\/Prep/CertificationPrep/Shape.h@{C:/Users/lopez/source/repos/JoshuaL03/Certification-\/Prep/CertificationPrep/Shape.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef SHAPE\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define SHAPE\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{comment}{// LO4}}
+\DoxyCodeLine{8 \textcolor{comment}{// The procedural/functional approach uses functions to handle data, while the}}
+\DoxyCodeLine{9 \textcolor{comment}{// object-\/oriented approach uses objects to contain and handle data}}
+\DoxyCodeLine{10 \textcolor{comment}{// (encapsulation). Unlike the procedural approach, the object-\/oriented approach}}
+\DoxyCodeLine{11 \textcolor{comment}{// also features access specifiers, which allows for information hiding and more}}
+\DoxyCodeLine{12 \textcolor{comment}{// secure code.}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{class_shape}{Shape}} \{}
+\DoxyCodeLine{15  \textcolor{keyword}{private}:}
+\DoxyCodeLine{16   std::string color = \textcolor{stringliteral}{"{}black"{}};}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18  \textcolor{keyword}{public}:}
+\DoxyCodeLine{19   \textcolor{comment}{// LO1b}}
+\DoxyCodeLine{20   \mbox{\hyperlink{class_shape}{Shape}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{21   \textcolor{keyword}{explicit} \mbox{\hyperlink{class_shape}{Shape}}(\textcolor{keyword}{const} std::string c) : color(c)\{\};}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23   \textcolor{keyword}{auto} GetColor() -\/> std::string \{ \textcolor{keywordflow}{return} color; \}}
+\DoxyCodeLine{24   \textcolor{keywordtype}{void} SetColor(std::string c) \{ color = c; \}}
+\DoxyCodeLine{25 \};}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
