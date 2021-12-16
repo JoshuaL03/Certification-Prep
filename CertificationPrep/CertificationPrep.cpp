@@ -1,254 +1,384 @@
-#include <iostream>
-#include <string>
 #include <array>
-#include "Shape.h"
+#include <exception>
+#include <iostream>
+#include <stdexcept>
+#include <string>
+
+#include "Car.h"
+#include "Cheetah.h"
 #include "Circle.h"
+#include "Human.h"
+#include "Jet.h"
+#include "Run.h"
+#include "Shape.h"
 #include "Square.h"
 #include "Triangle.h"
 #include "Vehicle.h"
-#include "Car.h"
-#include "Jet.h"
-#include "Run.h"
-#include "Human.h"
-#include "Cheetah.h"
 
 void DemonstrateClass();
 void DemonstrateDynamicDispatch();
 void DemonstrateInterface();
 void DemonstrateAggregate();
 
-template<size_t length>
+void ignoreLine();
+
+template <size_t length>
 auto AddArray(const std::array<int, length>& array) noexcept -> int;
 
-template<size_t length>
+template <size_t length>
 auto MultiplyArray(const std::array<int, length>& array) noexcept -> int;
 
-template<size_t length>
-auto DoMath(const std::array<int, length>& array, int (&operation)(const std::array<int, length>&)) noexcept -> int;
+template <size_t length>
+auto DoMath(const std::array<int, length>& array,
+            int (&operation)(const std::array<int, length>&)) noexcept -> int;
 
-auto main() -> int
-{
-	std::cout << "What feature would you primarily like to work with?\n\n";
-	std::cout << "Enter 1 to focus on classes and subclasses with shapes.\n";
-	std::cout << "Enter 2 to focus on dynamic dispatch and subtyping with vehicles.\n";
-	std::cout << "Enter 3 to focus on interfaces with running.\n";
-	std::cout << "Enter 4 to focus on iterators, aggregates, and functions as arguments.\n";
+auto SetShapeColor() -> std::string;
 
-	int feature = 0;
-	std::cin >> feature;
-	std::cout << std::endl;
+auto SetShapeDimension() -> double;
 
-	switch (feature) {
-	case 1:
-		DemonstrateClass();
-		break;
-	case 2:
-		DemonstrateDynamicDispatch();
-		break;
-	case 3:
-		DemonstrateInterface();
-		break;
-	case 4:
-		DemonstrateAggregate();
-		break;
-	default:
-		std::cout << "An invalid number was entered. The program will now end.\n";
-	}
+auto main() -> int {
+  try {
+    bool continueExecution = true;
+
+    while (continueExecution) {
+      std::cout << "What feature would you primarily like to work with?\n\n";
+      std::cout << "Enter 1 to focus on classes and subclasses with shapes.\n";
+      std::cout << "Enter 2 to focus on dynamic dispatch and subtyping with "
+                   "vehicles.\n";
+      std::cout << "Enter 3 to focus on interfaces with running.\n";
+      std::cout << "Enter 4 to focus on iterators, aggregates, and functions "
+                   "as arguments.\n";
+      std::cout << "Enter anything else to end execution.\n";
+
+      int feature = 0;
+      std::cin >> feature;
+      std::cout << std::endl;
+
+      switch (feature) {
+        case 1:
+          DemonstrateClass();
+          break;
+        case 2:
+          DemonstrateDynamicDispatch();
+          break;
+        case 3:
+          DemonstrateInterface();
+          break;
+        case 4:
+          DemonstrateAggregate();
+          break;
+        default:
+          std::cout
+              << "An invalid input was entered. The program will now end.\n";
+          continueExecution = false;
+      }
+    }
+  } catch (...) {
+    std::cout << "An error has occurred somewhere. The program will now end.\n";
+  }
 }
 
 void DemonstrateClass() {
-	std::string color;
+  std::string color;
 
-	int radius = 0;
-	std::cout << "Creating a circle object...\n";
-	std::cout << "Enter the color of the circle: ";
-	std::cin >> color;
-	std::cout << "Enter the radius of the circle: ";
-	std::cin >> radius;
-	Circle circle1(radius, color);
-	std::cout << std::endl;
+  double radius = 0;
+  std::cout << "Creating a circle object...\n";
+  color = SetShapeColor();
+  std::cout << "Enter the radius of the circle: ";
+  radius = SetShapeDimension();
+  Circle circle1(radius, color);
+  std::cout << std::endl;
 
-	int side = 0;
-	std::cout << "Creating a square object...\n";
-	std::cout << "Enter the color of the square: ";
-	std::cin >> color;
-	std::cout << "Enter the side length of the square: ";
-	std::cin >> side;
-	Square square1(side, color);
-	std::cout << std::endl;
+  double side = 0;
+  std::cout << "Creating a square object...\n";
+  color = SetShapeColor();
+  std::cout << "Enter the side length of the square: ";
+  side = SetShapeDimension();
+  Square square1(side, color);
+  std::cout << std::endl;
 
-	int base = 0;
-	int height = 0;
-	std::cout << "Creating a triangle object...\n";
-	std::cout << "Enter the color of the triangle: ";
-	std::cin >> color;
-	std::cout << "Enter the base of the triangle: ";
-	std::cin >> base;
-	std::cout << "Enter the height of the triangle: ";
-	std::cin >> height;
-	Triangle triangle1(base, height, color);
-	std::cout << std::endl;
+  double base = 0;
+  double height = 0;
+  std::cout << "Creating a triangle object...\n";
+  color = SetShapeColor();
+  std::cout << "Enter the base of the triangle: ";
+  base = SetShapeDimension();
+  std::cout << "Enter the height of the triangle: ";
+  height = SetShapeDimension();
+  Triangle triangle1(base, height, color);
+  std::cout << std::endl;
 
-	std::cout << "Creating another circle object with default values...\n";
-	Circle circle2;
-	std::cout << "Editing the circle's radius...\n\n";
-	circle2.SetRadius(2);
+  std::cout << "Creating another circle object with default values...\n";
+  Circle circle2;
+  std::cout << "Editing the circle's radius...\n\n";
+  circle2.SetRadius(2);
 
-	std::cout << "Retrieving the shapes' information...\n";
+  std::cout << "Retrieving the shapes' information...\n";
 
-	// Output the first circle's information
-	std::cout << "The " << circle1.GetColor() << " circle has area " << circle1.CalculateArea();
-	std::cout << " and circumference " << circle1.CalculateCircumference() << std::endl;
+  // Output the first circle's information
+  std::cout << "The " << circle1.GetColor() << " circle has area "
+            << circle1.CalculateArea();
+  std::cout << " and circumference " << circle1.CalculateCircumference()
+            << std::endl;
 
-	// Output the square's information
-	std::cout << "The " << square1.GetColor() << " square has area " << square1.CalculateArea();
-	std::cout << " and perimeter " << square1.CalculatePerimeter() << std::endl;
+  // Output the square's information
+  std::cout << "The " << square1.GetColor() << " square has area "
+            << square1.CalculateArea();
+  std::cout << " and perimeter " << square1.CalculatePerimeter() << std::endl;
 
-	// Output the triangle's information
-	std::cout << "The " << triangle1.GetColor() << " triangle has area " << triangle1.CalculateArea();
-	std::cout << std::endl;
+  // Output the triangle's information
+  std::cout << "The " << triangle1.GetColor() << " triangle has area "
+            << triangle1.CalculateArea();
+  std::cout << std::endl;
 
-	// Output the second, default circle's information
-	std::cout << "The default circle is " << circle2.GetColor() << " and has area " << circle2.CalculateArea();
-	std::cout << ", and circumference " << circle2.CalculateCircumference() << std::endl;
+  // Output the second, default circle's information
+  std::cout << "The default circle is " << circle2.GetColor()
+            << " and has area " << circle2.CalculateArea();
+  std::cout << ", and circumference " << circle2.CalculateCircumference()
+            << std::endl;
+  std::cout << std::endl << std::endl;
 }
 
 void DemonstrateDynamicDispatch() {
-	
-	std::cout << "Creating a vehicle...\n";
-	Vehicle vehicle1;
-	std::cout << "The vehicle goes " << vehicle1.MakeSound() << std::endl;
+  std::cout << "Creating a vehicle...\n";
+  Vehicle vehicle1;
+  std::cout << "The vehicle goes " << vehicle1.MakeSound() << std::endl;
 
-	std::cout << "Creating a car...\n";
-	Car car1;
-	std::cout << "The car goes " << car1.MakeSound() << std::endl;
+  std::cout << "Creating a car...\n";
+  Car car1;
+  std::cout << "The car goes " << car1.MakeSound() << std::endl;
 
-	std::cout << "Creating a jet...\n";
-	Jet jet1;
-	std::cout << "The jet goes " << jet1.MakeSound() << std::endl;
+  std::cout << "Creating a jet...\n";
+  Jet jet1;
+  std::cout << "The jet goes " << jet1.MakeSound() << std::endl;
 
-	std::cout << "Creating a mystery vehicle...\n\n";
-	Vehicle* mysteryVehicle = nullptr;
-	// Test the mysteryvehicle for nullness to prevent the need for gsl::not_null
-	if (mysteryVehicle == nullptr) {};
+  std::cout << "Creating a mystery vehicle...\n\n";
+  Vehicle* mysteryVehicle = nullptr;
+  // Test the mysteryvehicle for nullness to prevent the need for gsl::not_null
+  if (mysteryVehicle == nullptr) {
+  };
 
-	std::cout << "Altering mystery vehicle...\n";
-	mysteryVehicle = &vehicle1;
-	if (mysteryVehicle != nullptr) {
-		std::cout << "The mystery vehicle goes " << mysteryVehicle->MakeSound() << std::endl;
-	}
-	else {
-		std::cout << "The mystery vehicle does not make a sound. It must be broken!\n\n";
-	}
+  std::cout << "Altering mystery vehicle...\n";
+  mysteryVehicle = &vehicle1;
+  if (mysteryVehicle != nullptr) {
+    std::cout << "The mystery vehicle goes " << mysteryVehicle->MakeSound()
+              << std::endl;
+  } else {
+    std::cout
+        << "The mystery vehicle does not make a sound. It must be broken!\n\n";
+  }
 
+  std::cout << "Altering the mystery vehicle again...\n";
+  // Make the mysteryVehicle point to a Car object, giving it access to a
+  // different MakeSound function
+  mysteryVehicle = &car1;
+  if (mysteryVehicle != nullptr) {
+    std::cout << "The mystery vehicle goes " << mysteryVehicle->MakeSound()
+              << std::endl;
+  } else {
+    std::cout
+        << "The mystery vehicle does not make a sound. It must be broken!\n\n";
+  }
 
-	std::cout << "Altering the mystery vehicle again...\n";
-	// Make the mysteryVehicle point to a Car object, giving it access to a different MakeSound function
-	mysteryVehicle = &car1;
-	if (mysteryVehicle != nullptr) {
-		std::cout << "The mystery vehicle goes " << mysteryVehicle->MakeSound() << std::endl;
-	}
-	else {
-		std::cout << "The mystery vehicle does not make a sound. It must be broken!\n\n";
-	}
+  std::cout << "Altering the mystery vehicle once more...\n";
+  // Make the mysteryVehicle point to a Jet object, giving it access to another
+  // MakeSound function
+  mysteryVehicle = &jet1;
+  if (mysteryVehicle != nullptr) {
+    std::cout << "The mystery vehicle goes " << mysteryVehicle->MakeSound()
+              << std::endl;
+  } else {
+    std::cout
+        << "The mystery vehicle does not make a sound. It must be broken!\n\n";
+  }
 
-	std::cout << "Altering the mystery vehicle once more...\n";
-	// Make the mysteryVehicle point to a Jet object, giving it access to another MakeSound function
-	mysteryVehicle = &jet1;
-	if (mysteryVehicle != nullptr) {
-		std::cout << "The mystery vehicle goes " << mysteryVehicle->MakeSound() << std::endl;
-	}
-	else {
-		std::cout << "The mystery vehicle does not make a sound. It must be broken!\n\n";
-	}
+  std::cout << std::endl;
 
-	// Object-oriented inheritance is what allows subtyping to occur.
-	// The subtype has all of the methods and fields that its supertype has (due to inheritance),
-	// so it can be used in various situations where the supertype is expected.
-	// Some of the supertypes functions can also be overridden by functions in the subtype using virtual functions.
+  // Object-oriented inheritance is what allows subtyping to occur.
+  // The subtype has all of the methods and fields that its supertype has (due
+  // to inheritance), so it can be used in various situations where the
+  // supertype is expected. Some of the supertypes functions can also be
+  // overridden by functions in the subtype using virtual functions.
 }
 
 void DemonstrateInterface() {
-	// Humans and cheetahs are not very similar, but they both run.
-	// They can both inherit from an interface class called Run.
-	// Note that no object of the Run class can be instantiated.
+  // Humans and cheetahs are not very similar, but they both run.
+  // They can both inherit from an interface class called Run.
+  // Note that no object of the Run class can be instantiated.
 
-	std::cout << "Choosing a human...\n";
-	Human Steven("Steven");
-	std::cout << "The human's name is " << Steven.GetName() << std::endl;
-	
-	std::cout << std::endl;
-	Steven.StartRunning();
-	Steven.StopRunning();
-	
-	std::cout << std::endl;
-	Steven.WatchTV();
+  std::cout << "Choosing a human...\n";
+  Human Steven("Steven");
+  std::cout << "The human's name is " << Steven.GetName() << std::endl;
 
-	std::cout << "\nChoosing a cheetah...\n";
-	Cheetah cheetah1("gazelles");
-	std::cout << "The cheetah has no name, but its preferred prey is " << cheetah1.GetPreferredPrey() << std::endl;
-	
-	std::cout << std::endl;
-	cheetah1.StartRunning();
-	cheetah1.StopRunning();
+  std::cout << std::endl;
+  Steven.StartRunning();
+  Steven.StopRunning();
 
-	std::cout << std::endl;
-	cheetah1.Hunt();
+  std::cout << std::endl;
+  Steven.WatchTV();
+
+  std::cout << "\nChoosing a cheetah...\n";
+  Cheetah cheetah1("gazelles");
+  std::cout << "The cheetah has no name, but its preferred prey is "
+            << cheetah1.GetPreferredPrey() << std::endl;
+
+  std::cout << std::endl;
+  cheetah1.StartRunning();
+  cheetah1.StopRunning();
+
+  std::cout << std::endl;
+  cheetah1.Hunt();
+  std::cout << std::endl << std::endl;
 }
 
 void DemonstrateAggregate() {
+  std::cout << "Creating an array of 5 integers...\n";
+  constexpr size_t arrayLength = 5;
+  // Use std::array instead of a C-style array to meet the C++ Core Guidelines
+  std::array<int, arrayLength> intArray = {0, 0, 0, 0, 0};
 
-	std::cout << "Creating an array of 5 integers...\n";
-	constexpr size_t arrayLength = 5;
-	// Use std::array instead of a C-style array to meet the C++ Core Guidelines
-	std::array<int, arrayLength> intArray = { 0, 0, 0, 0, 0 };
+  std::cout << "Assigning values to the array...\n";
+  bool invalidInput = true;
+  std::string stringInput;
+  // Assign values to the array using a range-based for loop to avoid directly
+  // indexing the array
+  // https://stackoverflow.com/questions/47366755/how-to-eliminate-only-index-into-arrays-using-constant-expressions-warning
+  for (auto& element : intArray) {
+    // intArray.data() returns the address of element zero of the array
+    std::cout << "Enter the value for element " << &element - intArray.data()
+              << ": ";
+    while (invalidInput) {
+      try {
+        ignoreLine();
+        std::cin >> stringInput;
+        // std::stoi will throw std::invalid_argument if the stringInput cannot
+        // be converted to an integer.
+        // https://stackoverflow.com/questions/39887496/how-to-stop-integer-variable-from-taking-double-input-digits-before-decimal-an/39888125
+        // If the input is converted successfully, it will be compared to a
+        // double conversion of it, and matching the two will determine whether
+        // or not the input is an integer.
+        if (std::stoi(stringInput) == std::stod(stringInput)) {
+          element = std::stoi(stringInput);
+          invalidInput = false;
+        } else {
+          throw 1;
+        }
+      } catch (int) {
+        std::cout << "The value is a number, but is not an integer.\n";
+        std::cout << "Please re-enter the value: ";
+        std::cin.clear();
+      } catch (const std::invalid_argument e1) {
+        std::cout << "The value is not a number.\n";
+        std::cout << "Please re-enter the value: ";
+        std::cin.clear();
+      } catch (const std::out_of_range e3) {
+        std::cout << "The number entered was too large.\n";
+        std::cout << "Please re-enter the value: ";
+      } catch (...) {
+        std::cout << "An error occurred while processing the value entered.\n";
+        std::cout << "Please re-enter the value: ";
+        std::cin.clear();
+      }
+    };
+    invalidInput = true;
+  }
 
-	std::cout << "Assigning values to the array...\n";
-	// Assign values to the array using a range-based for loop to avoid directly indexing the array
-	// https://stackoverflow.com/questions/47366755/how-to-eliminate-only-index-into-arrays-using-constant-expressions-warning
-	for (auto& element : intArray) {
-		std::cout << "Enter the value for element " << &element - intArray.data() << ": "; // intArray.data() returns the address of element zero of the array
-		std::cin >> element;
-	}
+  std::cout << "\nThe finished array is {";
+  for (auto& element : intArray) {
+    std::cout << element;
+    if (&element - intArray.data() < arrayLength - 1) {
+      std::cout << ", ";
+    }
+  }
+  std::cout << "}\n";
 
-	std::cout << "\nThe finished array is {";
-	for (auto& element : intArray) {
-		std::cout << element;
-		if (&element - intArray.data() < arrayLength - 1) {
-			std::cout << ", ";
-		}
-	}
-	std::cout << "}\n";
+  std::cout << "\nThe sum of all the elements in the array is ";
+  std::cout << DoMath(intArray, AddArray) << std::endl;
 
-	std::cout << "\nThe sum of all the elements in the array is ";
-	std::cout << DoMath(intArray, AddArray) << std::endl;
+  std::cout << "\nThe product of all the elements in the array is ";
+  std::cout << DoMath(intArray, MultiplyArray) << std::endl;
+  std::cout << std::endl << std::endl;
+}
 
-	std::cout << "\nThe product of all the elements in the array is ";
-	std::cout << DoMath(intArray, MultiplyArray) << std::endl;
+// Ignore excess input, clearing it out of the buffer. The code is stored in a
+// function for ease of use.
+// https://www.learncpp.com/cpp-tutorial/stdcin-and-handling-invalid-input/
+void ignoreLine() {
+  std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
 // A template is used to keep the function general and increase reusability
 // https://stackoverflow.com/questions/17156282/passing-a-stdarray-of-unknown-size-to-a-function
-template<size_t length>
+template <size_t length>
 auto AddArray(const std::array<int, length>& array) noexcept -> int {
-	int sum = 0;
-	for (auto& element : array) {
-		sum += element;
-	}
-	return sum;
+  int sum = 0;
+  for (auto& element : array) {
+    sum += element;
+  }
+  return sum;
 }
 
-template<size_t length>
+template <size_t length>
 auto MultiplyArray(const std::array<int, length>& array) noexcept -> int {
-	int product = 1;
-	for (auto& element : array) {
-		product *= element;
-	}
-	return product;
+  int product = 1;
+  for (auto& element : array) {
+    product *= element;
+  }
+  return product;
 }
 
 // Take the AddArray or MultiplyArray functions as arguments
-template<size_t length>
-auto DoMath(const std::array<int, length>& array, int (&operation)(const std::array<int, length>&)) noexcept -> int{
-	return operation(array);
+template <size_t length>
+auto DoMath(const std::array<int, length>& array,
+            int (&operation)(const std::array<int, length>&)) noexcept -> int {
+  return operation(array);
+}
+
+auto SetShapeColor() -> std::string {
+  bool invalidInput = true;
+  std::string color;
+  std::cout << "Enter the color (red, blue, yellow, or black): ";
+  while (invalidInput) {
+    try {
+      ignoreLine();
+      std::cin >> color;
+      if (!(color == "red" || color == "blue" || color == "yellow" ||
+            color == "black")) {
+        throw 1;
+      }
+      invalidInput = false;
+    } catch (int) {
+      std::cout << "The color entered is not valid.\n";
+      std::cout << "Please re-enter the color (red, blue, yellow, or black): ";
+    } catch (...) {
+      std::cout << "An error occurred while processing the color entered.\n";
+      std::cout << "Please re-enter the color (red, blue, yellow, or black): ";
+    }
+  }
+  return color;
+}
+
+auto SetShapeDimension() -> double {
+  bool invalidInput = true;
+  double dimension = 0;
+  while (invalidInput) {
+    try {
+      ignoreLine();
+      std::cin >> dimension;
+      if (std::cin.fail()) {
+        throw std::runtime_error("The dimension is not a number.");
+      }
+      invalidInput = false;
+    } catch (const std::runtime_error& e) {
+      std::cout << e.what() << std::endl;
+      std::cout << "Please re-enter the dimension: ";
+      std::cin.clear();
+    } catch (...) {
+      std::cout
+          << "An error occurred while processing the dimension entered.\n";
+      std::cout << "Please re-enter the dimension: ";
+      std::cin.clear();
+    }
+  }
+  return dimension;
 }

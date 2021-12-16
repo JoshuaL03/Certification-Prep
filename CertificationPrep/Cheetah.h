@@ -3,21 +3,20 @@
 
 #include "Run.h"
 
-class Cheetah : public Run
-{
-private:
-	std::string preferredPrey;
+class Cheetah : public Run {
+ private:
+  std::string preferredPrey;
 
-public:
-	explicit Cheetah(std::string prey) : preferredPrey(prey) {}
+ public:
+  explicit Cheetah(std::string prey) : preferredPrey(prey) {}
 
-	void SetPreferredPrey(std::string prey) { preferredPrey = prey; }
-	auto GetPreferredPrey() -> std::string { return preferredPrey; }
+  void SetPreferredPrey(std::string prey) { preferredPrey = prey; }
+  auto GetPreferredPrey() -> std::string { return preferredPrey; }
 
-	void StartRunning() override;
-	void StopRunning() override;
+  void StartRunning() override;
+  void StopRunning() override;
 
-	void Hunt();
+  void Hunt();
 };
 
 #endif

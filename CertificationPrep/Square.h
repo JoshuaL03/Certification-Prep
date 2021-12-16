@@ -3,21 +3,20 @@
 
 #include "Shape.h"
 
-class Square : public Shape
-{
-private:
-	double side;
+class Square : public Shape {
+ private:
+  double side;
 
-public:
-	Square() noexcept { side = 1; }
-	explicit Square(double s) noexcept : side(s) {};
-	Square(double s, std::string c) : Shape(c), side(s) {};
+ public:
+  Square() noexcept { side = 1; }
+  explicit Square(double s) noexcept : side(s){};
+  Square(double s, std::string c) : Shape(c), side(s){};
 
-	auto GetSide() const noexcept -> double { return side; }
-	void SetSide(double s) noexcept { side = s; }
+  auto GetSide() const noexcept -> double { return side; }
+  void SetSide(double s) noexcept { side = s; }
 
-	auto CalculateArea() const noexcept -> double;
-	auto CalculatePerimeter() const noexcept -> double;
+  auto CalculateArea() const noexcept -> double;
+  auto CalculatePerimeter() const noexcept -> double;
 };
 
 #endif

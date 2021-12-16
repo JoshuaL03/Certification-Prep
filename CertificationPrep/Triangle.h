@@ -3,25 +3,27 @@
 
 #include "Shape.h"
 
-class Triangle : public Shape
-{
-private:
-	double base;
-	double height;
+class Triangle : public Shape {
+ private:
+  double base;
+  double height;
 
-public:
-	Triangle() noexcept { base = 1; height = 1; }
-	Triangle(double b, double h) noexcept : base(b), height(h) {};
-	Triangle(double b, double h, std::string c) : Shape(c), base(b), height(h) {};
+ public:
+  Triangle() noexcept {
+    base = 1;
+    height = 1;
+  }
+  Triangle(double b, double h) noexcept : base(b), height(h){};
+  Triangle(double b, double h, std::string c) : Shape(c), base(b), height(h){};
 
-	auto GetBase() const noexcept -> double { return base; }
-	void SetBase(double b) noexcept { base = b; }
+  auto GetBase() const noexcept -> double { return base; }
+  void SetBase(double b) noexcept { base = b; }
 
-	auto GetHeight() const noexcept -> double { return height; }
-	void SetHeight(double h) noexcept { height = h; }
+  auto GetHeight() const noexcept -> double { return height; }
+  void SetHeight(double h) noexcept { height = h; }
 
-	auto CalculateArea() const noexcept -> double;
-	// The perimeter cannot be calculated only given base and height
+  auto CalculateArea() const noexcept -> double;
+  // The perimeter cannot be calculated only given base and height
 };
 
 #endif
