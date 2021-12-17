@@ -20,18 +20,18 @@ class Cheetah : public Run {
   auto GetPreferredPrey() -> std::string { return preferredPrey; }
 
   /** @brief Prints a string stating the cheetah has started running.
-   *
+   *  @return void
    */
   void StartRunning() override;
 
   /** @brief Prints a string stating the cheetah has started running.
-   *
+   *  @return void
    */
   void StopRunning() override;
 
   /** @brief Prints a string stating the cheetah is hunting for its preferred
    *         prey (by name).
-   *
+   *  @return void
    */
   void Hunt();
 };

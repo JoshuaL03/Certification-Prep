@@ -19,17 +19,17 @@ class Human : public Run {
   auto GetName() -> std::string { return name; }
 
   /** @brief Prints a string stating the person (by name) has started running.
-   *
+   *  @return void
    */
   void StartRunning() override;
 
   /** @brief Prints a string stating the person (by name) has stopped running.
-   *
+   *  @return void
    */
   void StopRunning() override;
 
   /** @brief Prints a string stating the person (by name) is watching TV.
-   *
+   *  @return void
    */
   void WatchTV();
 };

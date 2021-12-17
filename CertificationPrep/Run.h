@@ -28,12 +28,12 @@ class Run {
   auto operator=(Run&&) -> Run& = delete;
 
   /** @brief Pure virtal function to be overridden.
-   *
+   *  @return void
    */
   virtual void StartRunning() = 0;
 
   /** @brief Pure virtal function to be overridden.
-   *
+   *  @return void
    */
   virtual void StopRunning() = 0;
 };

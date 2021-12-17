@@ -27,26 +27,29 @@
 
 /** @brief Incorporates classes and subclasses with inheritance
  *         using shapes.
+ *  @return void
  */
 void DemonstrateClass();
 
 /** @brief Uses dynamic dispatching and subtyping with vehicles.
- *
+ *  @return void
  */
 void DemonstrateDynamicDispatch();
 
 /** @brief Demonstrates interfaces with humans and cheetahs, using
  *         running as the common link/interface between the two.
+ *  @return void
  */
 void DemonstrateInterface();
 
 /** @brief Utilizes std::array as an aggregate, finding both the product
  *         and sum of all the elements with references to functions.
+ *  @return void
  */
 void DemonstrateAggregate();
 
 /** @brief Ignores excess input, clearing it out of the buffer.
- *
+ *  @return void
  */
 void ignoreLine();
 
