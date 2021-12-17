@@ -1,3 +1,8 @@
+/** @brief Derived class of the Run interface.
+ *
+ *  Holds a name (string) as a private data member.
+ */
+
 #ifndef HUMAN_H
 #define HUMAN_H
 
@@ -13,9 +18,19 @@ class Human : public Run {
   void SetName(std::string n) { name = n; }
   auto GetName() -> std::string { return name; }
 
+  /** @brief Prints a string stating the person (by name) has started running.
+   *
+   */
   void StartRunning() override;
+
+  /** @brief Prints a string stating the person (by name) has stopped running.
+   *
+   */
   void StopRunning() override;
 
+  /** @brief Prints a string stating the person (by name) is watching TV.
+   *
+   */
   void WatchTV();
 };
 

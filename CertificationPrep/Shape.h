@@ -1,5 +1,6 @@
 /** @brief Base class for Circle, Square, and Triangle.
  * 
+ *  Holds a color (string) as a private data member.
  */
 
 #ifndef SHAPE_H

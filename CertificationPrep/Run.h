@@ -1,3 +1,10 @@
+/** @brief Interface class for Human and Cheetah.
+ *
+ *  It has no fields. It also contains two pure virtual functions, StartRunning
+ *  and StopRunning, that must be overridden in the derived classes to
+ *  instantiate them.
+ */
+
 #ifndef RUN_H
 #define RUN_H
 
@@ -20,7 +27,14 @@ class Run {
   auto operator=(const Run&) -> Run& = delete;
   auto operator=(Run&&) -> Run& = delete;
 
+  /** @brief Pure virtal function to be overridden.
+   *
+   */
   virtual void StartRunning() = 0;
+
+  /** @brief Pure virtal function to be overridden.
+   *
+   */
   virtual void StopRunning() = 0;
 };
 

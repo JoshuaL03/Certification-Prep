@@ -1,5 +1,6 @@
 /** @brief Derived class of Shape. 
  * 
+ *  It holds a radius (double) as a private data member.
  */
 
 #ifndef CIRCLE_H
@@ -34,7 +35,14 @@ class Circle : public Shape {
   void SetRadius(double r) noexcept { radius = r; }
 
   // LO1a
+  /** @brief Calculates the area of the circle object.
+   *  @return The area of the circle.
+   */
   [[nodiscard]] auto CalculateArea() const noexcept -> double;
+
+  /** @brief Calculates the circumference of the circle object.
+   *  @return The circumference of the circle.
+   */
   [[nodiscard]] auto CalculateCircumference() const noexcept -> double;
 };
 

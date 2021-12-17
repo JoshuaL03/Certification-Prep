@@ -1,3 +1,9 @@
+/** @brief Base class for Jet and Car.
+ *
+ *  It has no fields. It has a virtual function, MakeSound, that is overridden
+ *  in each derived class.
+ */
+
 #ifndef VEHICLE_H
 #define VEHICLE_H
 
@@ -28,6 +34,12 @@ class Vehicle {
   auto operator=(const Vehicle&) -> Vehicle& = delete;
   auto operator=(Vehicle&&) -> Vehicle& = delete;
 
+  /** @brief Makes/outputs a vehicle sound.
+   *
+   *  It is also virtual, so it can be overridden in derived classes.
+   *
+   *  @return The sound the vehicle makes.
+   */
   virtual auto MakeSound() -> std::string;
 };
 

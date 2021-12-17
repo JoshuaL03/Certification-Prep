@@ -1,6 +1,6 @@
-/** @brief
- *  
- * 
+/** @brief Derived class of Shape.
+ *
+ *  It holds a base (double) and height (double) as private data members.
  */
 
 #ifndef TRIANGLE_H
@@ -29,6 +29,9 @@ class Triangle : public Shape {
   [[nodiscard]] auto GetHeight() const noexcept -> double { return height; }
   void SetHeight(double h) noexcept { height = h; }
 
+  /** @brief Calculates the area of the triangle object.
+   *  @return The area of the triangle.
+   */
   [[nodiscard]] auto CalculateArea() const noexcept -> double;
   // The perimeter cannot be calculated only given base and height
 };
